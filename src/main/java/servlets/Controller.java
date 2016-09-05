@@ -7,10 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.Enumeration;
 
 /**
@@ -24,27 +21,35 @@ public class Controller extends HttpServlet {
     Enumeration<String> params = request.getParameterNames();
 
     Connection c = null;
-    Statement stmt = null;
+    PreparedStatement stmt = null;
     String result = "[";
 
     try {
       Class.forName("org.postgresql.Driver");
       c = DriverManager.getConnection("jdbc:postgresql://localhost:5432/custom", "postgres", "123cdtnrf");
       c.setAutoCommit(false);
-      stmt = c.createStatement();
+
       String query = "select lastname,firstname,middlename,city.name as cname,carnum,color,model from person " +
               "inner join city on person.id_city=city.id " +
               "inner join car on person.id_car=car.id where ";
       while (params.hasMoreElements()) {
         String name = params.nextElement();
-        query += name + "='" + request.getParameter(name) + "' and ";
-
+        query += name + "= ? and ";
       }
+
       query = query.replaceAll("\\sand\\s$", "");
+      stmt=c.prepareStatement(query);
+      params = request.getParameterNames();
+      int i=0;
+      while (params.hasMoreElements()) {
+        String name = params.nextElement();
+        stmt.setString(++i,request.getParameter(name));
+      }
+
 //      out.write(query);
 //      out.close();
 
-      ResultSet rs = stmt.executeQuery(query);
+      ResultSet rs = stmt.executeQuery();
       while (rs.next()) {
         String firstname = rs.getString("firstname");
         String lastname = rs.getString("lastname");

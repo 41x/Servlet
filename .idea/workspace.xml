@@ -2,14 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e00f92a5-11f8-4c39-b3b4-ffd5767b338e" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/artifact.war" afterPath="$PROJECT_DIR$/target/artifact.war" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/servlets/Controller.class" afterPath="$PROJECT_DIR$/target/classes/servlets/Controller.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/servlets/Controller.java" afterPath="$PROJECT_DIR$/src/main/java/servlets/Controller.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/index.html" afterPath="$PROJECT_DIR$/src/main/webapp/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/artifact/index.html" afterPath="$PROJECT_DIR$/target/artifact/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" />
     </list>
     <ignored path="testapp.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -45,10 +38,10 @@
       <file leaf-file-name="Controller.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/servlets/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="51" column="0" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
+            <state relative-caret-position="425">
+              <caret line="48" column="25" selection-start-line="48" selection-start-column="25" selection-end-line="48" selection-end-column="25" />
               <folding>
-                <marker date="1473099598766" expanded="true" signature="1186:1397" ph="select first... person" />
+                <marker date="1473101553765" expanded="true" signature="1067:1278" ph="select first... person" />
               </folding>
             </state>
           </provider>
@@ -810,20 +803,20 @@
       <workItem from="1473000513900" duration="11401000" />
       <workItem from="1473048095892" duration="7733000" />
       <workItem from="1473072462550" duration="4547000" />
-      <workItem from="1473092252624" duration="5471000" />
+      <workItem from="1473092252624" duration="7194000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="29152000" />
+    <option name="totallyTimeSpent" value="30875000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1604" height="876" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32974428" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32974428" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -884,7 +877,7 @@
         <state relative-caret-position="1003">
           <caret line="59" column="39" selection-start-line="59" selection-start-column="39" selection-end-line="59" selection-end-column="39" />
           <folding>
-            <marker date="1473099598766" expanded="true" signature="1186:1397" ph="select first... person" />
+            <marker date="1473101553765" expanded="true" signature="1067:1278" ph="select first... person" />
           </folding>
         </state>
       </provider>
@@ -910,7 +903,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1473099598766" expanded="true" signature="1186:1397" ph="select first... person" />
+            <marker date="1473101553765" expanded="true" signature="1067:1278" ph="select first... person" />
           </folding>
         </state>
       </provider>
@@ -936,7 +929,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1473099598766" expanded="true" signature="1186:1397" ph="select first... person" />
+            <marker date="1473101553765" expanded="true" signature="1067:1278" ph="select first... person" />
           </folding>
         </state>
       </provider>
@@ -977,10 +970,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/servlets/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="51" column="0" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
+        <state relative-caret-position="425">
+          <caret line="48" column="25" selection-start-line="48" selection-start-column="25" selection-end-line="48" selection-end-column="25" />
           <folding>
-            <marker date="1473099598766" expanded="true" signature="1186:1397" ph="select first... person" />
+            <marker date="1473101553765" expanded="true" signature="1067:1278" ph="select first... person" />
           </folding>
         </state>
       </provider>
