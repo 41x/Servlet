@@ -19,52 +19,57 @@ import java.util.Enumeration;
 @WebServlet(name = "Controller", urlPatterns = {"/controller"})
 public class Controller extends HttpServlet {
   protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    response.setCharacterEncoding("UTF-8");
     PrintWriter out = response.getWriter();
     Enumeration<String> params = request.getParameterNames();
 
     Connection c = null;
     Statement stmt = null;
+    String result = "[";
+
     try {
       Class.forName("org.postgresql.Driver");
-      c = DriverManager.getConnection("jdbc:postgresql://localhost:5432/custom","postgres", "123cdtnrf");
+      c = DriverManager.getConnection("jdbc:postgresql://localhost:5432/custom", "postgres", "123cdtnrf");
       c.setAutoCommit(false);
       stmt = c.createStatement();
-      String query="select firstname,lastname,middlename,id_city,city.name,id_car,carnum,color,model from person \n" +
-              "inner join city on person.id_city=city.id\n" +
+      String query = "select lastname,firstname,middlename,city.name as cname,carnum,color,model from person " +
+              "inner join city on person.id_city=city.id " +
               "inner join car on person.id_car=car.id where ";
       while (params.hasMoreElements()) {
-        String name=params.nextElement();
-        query+=name+"="+request.getParameter(name)+" and ";
-      }
-      query=query.substring(0,query.lastIndexOf(" and "));
-out.write(query);
+        String name = params.nextElement();
+        query += name + "='" + request.getParameter(name) + "' and ";
 
-//
-//      ResultSet rs = stmt.executeQuery(query);
-//
-//      while ( rs.next() ) {
-//        int id = rs.getInt("id");
-//        String  name = rs.getString("name");
-//        int age  = rs.getInt("age");
-//        String  address = rs.getString("address");
-//        float salary = rs.getFloat("salary");
-//        System.out.println( "ID = " + id );
-//        System.out.println( "NAME = " + name );
-//        System.out.println( "AGE = " + age );
-//        System.out.println( "ADDRESS = " + address );
-//        System.out.println( "SALARY = " + salary );
-//        System.out.println();
-//      }
-//      rs.close();
-//      stmt.close();
-//      c.close();
-    } catch ( Exception e ) {
-      System.err.println( e.getClass().getName()+": "+ e.getMessage() );
+      }
+      query = query.replaceAll("\\sand\\s$", "");
+//      out.write(query);
+//      out.close();
+
+      ResultSet rs = stmt.executeQuery(query);
+      while (rs.next()) {
+        String firstname = rs.getString("firstname");
+        String lastname = rs.getString("lastname");
+        String middlename = rs.getString("middlename");
+        String cityname = rs.getString("cname");
+        String carnum = rs.getString("carnum");
+        String color = rs.getString("color");
+        String model = rs.getString("model");
+        result += String.format("{\"firstname\":\"%s\"," +
+                " \"lastname\":\"%s\"," +
+                "\"middlename\":\"%s\"," +
+                "\"cname\":\"%s\"," +
+                "\"carnum\":\"%s\"," +
+                "\"color\":\"%s\"," +
+                "\"model\":\"%s\"},", firstname, lastname, middlename, cityname, carnum, color, model);
+      }
+      result = result.replaceAll(",$", "") + "]";
+      rs.close();
+      stmt.close();
+      c.close();
+    } catch (Exception e) {
+      System.err.println(e.getClass().getName() + ": " + e.getMessage());
       System.exit(0);
     }
-    System.out.println("Operation done successfully");
-
-
+    out.write(result);
   }
 
   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -1,31 +1,42 @@
 <html>
 <head>
+  <meta charset="UTF-8">
   <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
   <script>
     $(function () {
       $('.search').on('click', function (e) {
-        var firstname = $('.form > input:nth-child(1)').val();
-        var lastname = $('.form > input:nth-child(2)').val();
+        var lastname = $('.form > input:nth-child(1)').val();
+        var firstname = $('.form > input:nth-child(2)').val();
         var middlename = $('.form > input:nth-child(3)').val();
         var city = $('.form > input:nth-child(4)').val();
         var number = $('.form > input:nth-child(5)').val();
-        if(firstname=='' && secondname=='' && middlename=='' && city=='' && number==''){
+        var color = $('.form > input:nth-child(6)').val();
+        var model = $('.form > input:nth-child(7)').val();
+        if (firstname == '' && lastname == '' && middlename == '' && city == '' && number == '' && color == '' && model == '') {
           alert('Нет данных для поиска!');
           return;
         }
-        var data={};
-        if(firstname!='') data.firstname=firstname;
-        if(lastname!='') data.lastname=lastname;
-        if(middlename!='') data.middlename=middlename;
-        if(city!='') data.city=city;
-        if(number!='') data.number=number;
+        var data = {};
+        if (firstname != '') data.firstname = firstname;
+        if (lastname != '') data.lastname = lastname;
+        if (middlename != '') data.middlename = middlename;
+        if (city != '') data.name = city;
+        if (number != '') data.carnum = number;
+        if (color != '') data.color = color;
+        if (model != '') data.model = model;
         $.ajax({
           method: "POST",
           url: "/controller",
           data: data
         })
-            .done(function( msg ) {
-              alert( "Data Saved: " + msg );
+            .done(function (jsn) {
+              var result = JSON.parse(jsn);
+              if (!result.length) {
+                clearResults();
+                alert("Данные по запросу не найдены");
+                return;
+              }
+              buildHTML(result);
             })
             .fail(function () {
               console.log('ajax error');
@@ -33,20 +44,53 @@
       });
 
     });
+    function buildHTML(jsn) {
+      clearResults();
+      jsn.forEach(function (el) {
+        $('.t-container').append(
+            "<tr>" +
+            "<td>" + el.lastname + "</td>" +
+            "<td>" + el.firstname + "</td>" +
+            "<td>" + el.middlename + "</td>" +
+            "<td>" + el.cname + "</td>" +
+            "<td>" + el.carnum + "</td>" +
+            "<td>" + el.color + "</td>" +
+            "<td>" + el.model + "</td>" +
+            "</tr>"
+        );
+      });
+    }
+    function clearResults() {
+      $('.t-container > tr:not(:first-child)').remove();
+    }
   </script>
 </head>
 <body>
 <h2>Hello!</h2>
 <div class="form">
-  <input type="text" placeholder="Имя">
   <input type="text" placeholder="Фамилия">
+  <input type="text" placeholder="Имя">
   <input type="text" placeholder="Отчество">
   <input type="text" placeholder="Город">
   <input type="text" placeholder="Гос. номер автомобиля">
+  <input type="text" placeholder="цвет">
+  <input type="text" placeholder="марка">
   <button class="search">Поиск</button>
 </div>
 <div class="results">
-
+  <table>
+    <tbody class="t-container">
+    <tr>
+      <td>Фамилия</td>
+      <td>Имя</td>
+      <td>Отчество</td>
+      <td>Город</td>
+      <td>Гос.номер</td>
+      <td>Цвет</td>
+      <td>Марка</td>
+    </tr>
+    </tbody>
+  </table>
 </div>
 </body>
 </html>
