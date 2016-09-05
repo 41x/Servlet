@@ -1,0 +1,52 @@
+<html>
+<head>
+  <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+  <script>
+    $(function () {
+      $('.search').on('click', function (e) {
+        var firstname = $('.form > input:nth-child(1)').val();
+        var lastname = $('.form > input:nth-child(2)').val();
+        var middlename = $('.form > input:nth-child(3)').val();
+        var city = $('.form > input:nth-child(4)').val();
+        var number = $('.form > input:nth-child(5)').val();
+        if(firstname=='' && secondname=='' && middlename=='' && city=='' && number==''){
+          alert('Нет данных для поиска!');
+          return;
+        }
+        var data={};
+        if(firstname!='') data.firstname=firstname;
+        if(lastname!='') data.lastname=lastname;
+        if(middlename!='') data.middlename=middlename;
+        if(city!='') data.city=city;
+        if(number!='') data.number=number;
+        $.ajax({
+          method: "POST",
+          url: "/controller",
+          data: data
+        })
+            .done(function( msg ) {
+              alert( "Data Saved: " + msg );
+            })
+            .fail(function () {
+              console.log('ajax error');
+            });
+      });
+
+    });
+  </script>
+</head>
+<body>
+<h2>Hello!</h2>
+<div class="form">
+  <input type="text" placeholder="Имя">
+  <input type="text" placeholder="Фамилия">
+  <input type="text" placeholder="Отчество">
+  <input type="text" placeholder="Город">
+  <input type="text" placeholder="Гос. номер автомобиля">
+  <button class="search">Поиск</button>
+</div>
+<div class="results">
+
+</div>
+</body>
+</html>
